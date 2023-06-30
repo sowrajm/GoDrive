@@ -1,4 +1,4 @@
-let { car, reservation, user }= require("../models/models")
+let { car}= require("../models/models")
 
 async function addcar(req,res) 
 {
