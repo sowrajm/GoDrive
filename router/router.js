@@ -1,30 +1,23 @@
 const express = require('express');
 const router = express.Router();
-const { car, reservation, user } = require('../models/models');
-const { ObjectId } = require('mongodb');
+// const { car, reservation, user } = require('../models/models');
+// const { ObjectId } = require('mongodb');
+const { addcar , altercar , deletecar , getcar} = require("../controllers/carcontroller")
 
-router.post("/addcar",addCar)
 
-async function addCar(req,res) 
-{
-    let body =  req.body
-    // const customId = ObjectId.createFromHexString(body.number);
-    // let abc=JSON.stringify(body.number)
-    // const customId = new ObjectId(abc);
-    let newcar = new car({ 
-        
-        carname: body.name,
-        model: body.model, 
-        year: body.year,  
-        rentalPrice: body.rentalPrice,
-        availability: body.availability, 
-        features: body.features, 
-        imageUrl: body.imageUrl 
-    })
-    await newcar.save()
-    console.log(body);
-    res.json("Added new car")
-}
+router.post("/car",addcar)
+router.get("/car/:id",getcar)
+router.put("/car/:id",altercar)
+
+router.delete("/car/:id",deletecar)
+
+
+
+
+
+
+
+
  
 router.post("/reserve",newreservation)
 async function newreservation(req,res) 
